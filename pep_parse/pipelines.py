@@ -1,3 +1,4 @@
+import csv
 import datetime as dt
 from collections import defaultdict
 from pathlib import Path
@@ -19,7 +20,9 @@ class PepParsePipeline:
         now = dt.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         filename = dir_path / f'status_summary_{now}.csv'
         with open(filename, mode='w', encoding='utf-8') as f:
-            f.write('Статус,Количество\n')
-            for key, value in self.count_pep.items():
-                f.write(f'{key},{value}\n')
-            f.write(f'Total,{sum(self.count_pep.values())}\n')
+            writer = csv.writer(f, dialect='unix')
+            writer.writerows([
+                ['Статус', 'Количество'],
+                *self.count_pep.items(),
+                ['Total', sum(self.count_pep.values())],
+            ])
