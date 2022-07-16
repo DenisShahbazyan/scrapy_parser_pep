@@ -22,5 +22,6 @@ scrapy crawl pep
 
 ### Технологии:
 
-- Python 3.10.4
-- Scrapy 2.5.1
+- [Python](https://www.python.org/) 3.10.4
+- [Scrapy](https://pypi.org/project/Scrapy/) 2.5.1
+
